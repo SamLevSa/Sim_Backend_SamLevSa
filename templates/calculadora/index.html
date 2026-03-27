@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado - Calculadora</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 720px;
+            margin: 40px auto;
+            padding: 0 16px;
+            line-height: 1.5;
+            background: #f7f7f7;
+        }
+        .box {
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        form p {
+            margin-bottom: 12px;
+        }
+        button {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 6px;
+            background: #0d6efd;
+            color: #fff;
+            cursor: pointer;
+        }
+        .resultado {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #e9f7ef;
+            color: #0f5132;
+        }
+        .erro {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #fdecea;
+            color: #842029;
+        }
+        .dica {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Calculadora (Simulado)</h1>
+        <p>Somente a operacao de soma esta pronta. As demais devem ser implementadas pelos alunos.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Calcular</button>
+        </form>
+
+        {% if resultado != None %}
+            <div class="resultado">
+                Resultado: <strong>{{ resultado }}</strong>
+            </div>
+        {% endif %}
+
+        {% if erro %}
+            <div class="erro">
+                {{ erro }}
+            </div>
+        {% endif %}
+
+        <p class="dica">
+            Arquivo para completar: <code>calculadora/calculator.py</code>
+        </p>
+    </div>
+</body>
+</html>
